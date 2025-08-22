@@ -7,12 +7,10 @@ package DebugExercise;
 public class DebugExercise2 {
     /** Returns the max of a and b. Do not step into this function. */
     public static int max(int a, int b) {
-        int SIGN = 31;
-
-        int w = (b - a) >> SIGN;
+        int w = (b - a) >> 31;
         /* If you're stepping into this function, click the
            step out button because you're not going to learn anything. */
-        int z = ~(b - a) >> SIGN;
+        int z = ~(b - a) >> 31;
 
         int max = a & w | b & z;
         return max;

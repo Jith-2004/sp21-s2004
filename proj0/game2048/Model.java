@@ -122,7 +122,9 @@ public class Model extends Observable {
         for (int col = 0; col < sz; ++col) {
             for (int row = sz - 1; row >= 0; --row) {
                 Tile t = board.tile(col, row);
-                if (t == null) continue;
+                if (t == null) {
+                    continue;
+                }
                 int newRow = row;
                 while (newRow + 1 < sz) {
                     Tile nextTile = board.tile(col, newRow + 1);
@@ -135,7 +137,9 @@ public class Model extends Observable {
                         break;
                     }
                 }
-                if (newRow == row) continue;
+                if (newRow == row) {
+                    continue;
+                }
                 changed = true;
                 if (board.move(col, newRow, t)) {
                     score += t.value() * 2;
@@ -212,16 +216,18 @@ public class Model extends Observable {
         for (int col = 0; col < sz; ++col) {
             for (int row = 0; row < sz; ++row) {
                 Tile t = b.tile(col, row);
-                if (t == null) continue;
+                if (t == null) {
+                    continue;
+                }
                 if (col + 1 < sz) {
-                    Tile right_t = b.tile(col + 1, row);
-                    if (right_t != null && right_t.value() == t.value()) {
+                    Tile right = b.tile(col + 1, row);
+                    if (right != null && right.value() == t.value()) {
                         return true;
                     }
                 }
                 if (row + 1 < sz) {
-                    Tile above_t = b.tile(col, row + 1);
-                    if (above_t != null && above_t.value() == t.value()) {
+                    Tile above = b.tile(col, row + 1);
+                    if (above != null && above.value() == t.value()) {
                         return true;
                     }
                 }
